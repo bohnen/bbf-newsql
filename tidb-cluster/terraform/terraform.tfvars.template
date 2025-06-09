@@ -1,0 +1,29 @@
+# さくらのクラウドのAPIトークン
+sakuracloud_access_token = "dummy_access_token"
+sakuracloud_access_token_secret = "dummy_access_token_secret"
+# デプロイ先のゾーン
+sakuracloud_zone = "is1a"
+
+# SSH公開鍵のパス
+ssh_public_key_path = "~/.ssh/sakura_cloud.pub"
+
+# 作成するサーバの名前の先頭につける文字
+server_name_prefix = "tidbcluster"
+# 各サーバのデフォルトユーザーのパスワード
+server_local_password = "dummy_password"
+
+## TiDB クラスターの設定
+# TiDBサーバの個数
+num_tidb_servers = 1
+# TiKV & PD サーバの個数
+num_tikv_servers = 3
+# VPCルーターのIPアドレス
+gateway_ip = "192.168.100.1"
+# bastionサーバのIPアドレス
+bastion_ip = "192.168.100.5"
+# TiDBサーバのIPアドレスプレフィックス
+tidb_server_ip_prefix = "192.168.100.1"
+# TiKV & PDサーバのIPアドレスプレフィックス
+tikv_server_ip_prefix = "192.168.100.2"
+# monitorサーバのIPアドレス
+monitor_server_ip = "192.168.100.8"

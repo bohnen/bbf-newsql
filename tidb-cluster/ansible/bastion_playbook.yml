@@ -1,0 +1,16 @@
+---
+- name: Install necessary packages on bastion host
+  hosts: bastion
+  become: true
+  tasks:
+    - name: Download and install TiUP
+      shell: curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
+      args:
+        executable: /bin/bash
+        creates: ~/.tiup/bin/tiup
+      become: false
+      
+    - name: Install MySQL client
+      package:
+        name: mysql-client
+        state: present
