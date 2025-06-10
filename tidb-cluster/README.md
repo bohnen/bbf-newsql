@@ -2,7 +2,7 @@
 
 ## ディレクトリ構成
 
-- terraform: 8.2 Terraformを使ってTiDBクラスタを構築する サポートファイル
+- terraform: 8.2 Terraformを使ってTiDBクラスターを構築する サポートファイル
 - ansible: 8.3 Ansibleを使ったサーバのセットアップ サポートファイル
 - tiup: 8.4 TiUPを使ったTiDBクラスターのセットアップ サポートファイル
 
@@ -10,7 +10,7 @@
 
 このディレクトリは、書籍「TiDB実践入門」の第8章のサポートファイルです。
 各サブディレクトリには、対応するセクションで使用されるコードや設定ファイルが含まれています。
-本リポジトリをPCにクローンして、各セクションの手順に従ってください。
+本リポジトリをPCにクローンして、各セクションの手順にしたがってください。
 
 ```bash
 git clone git@github.com:bohnen/bbf-newsql.git
@@ -18,20 +18,39 @@ git clone git@github.com:bohnen/bbf-newsql.git
 
 ## 各サブディレクトリの説明
 
-terraform ディレクトリは、Terraformを使用してTiDBクラスタを構築するためのサポートファイルです。
+terraform ディレクトリは、Terraformを使用してTiDBクラスターを構築するためのサポートファイルです。
 PC上でTerraformを使用して、さくらインターネット上で必要なサーバを構築します。
 
 ansible ディレクトリは、Ansibleを使用してサーバのセットアップを行うためのサポートファイルです。
 Ansibleは踏み台サーバ上で実行しますので、ディレクトリ全体を踏み台サーバにコピーして利用してください。
 
 ```bash
-scp -r ansible/ ubuntu@<踏み台サーバのIPアドレス>:~/
+scp -i ~/.ssh/<ssh秘密鍵> -r ansible/ ubuntu@<踏み台サーバのIPアドレス>:~/
 ```
 
 tiup ディレクトリは、TiUPを使用してTiDBクラスターをセットアップするためのサポートファイルです。
 こちらも踏み台サーバ上で実行しますので、ディレクトリ全体を踏み台サーバにコピーして利用してください。
 
 ```bash
-scp -r tiup/ ubuntu@<踏み台サーバのIPアドレス>:~/
+scp -i ~/.ssh/<ssh秘密鍵> -r tiup/ ubuntu@<踏み台サーバのIPアドレス>:~/
 ```
 
+## Tips
+
+### SSH接続時のホストキーの警告
+
+さくらインターネットでは、VPCルーターのIPアドレスに同じアドレスが割り当てられることがあります。
+そのためterraformでサーバを何回か構築していると、SSH接続時に次のようなエラーが発生することがあります。
+
+```text
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+```
+
+この場合、次のコマンドでSSHのホストキーを削除してください。
+
+```bash
+ssh-keygen -R <VPCルーターのIPアドレス>
+```

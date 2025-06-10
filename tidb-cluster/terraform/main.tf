@@ -10,12 +10,6 @@ locals {
   host_name = "${var.server_name_prefix}-bastion"
 }
 
-# TiDBクラスタサーバのSSH公開鍵を生成する
-resource "sakuracloud_ssh_key_gen" "tidb_key" {
-  name = "tidb_key"
-  description = "SSH Key for TiDB Cluster"
-}
-
 # プライベートネットワークのスイッチ
 resource "sakuracloud_switch" "private_sw" {
   name        = "${var.server_name_prefix}-sw"
