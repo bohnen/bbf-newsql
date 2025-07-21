@@ -1,0 +1,13 @@
+---
+- name: Configure passwordless sudo for ubuntu user
+  hosts: cluster
+  become: true
+  tasks:
+    - name: Add ubuntu user to sudoers with NOPASSWD
+      lineinfile:
+        path: /etc/sudoers.d/ubuntu
+        line: 'ubuntu ALL=(ALL) NOPASSWD: ALL'
+        state: present
+        create: yes
+        mode: '0440'
+        validate: 'visudo -cf %s'
