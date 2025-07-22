@@ -138,84 +138,20 @@ resource "aws_security_group" "cluster" {
   description = "Security group for TiDB cluster"
   vpc_id      = aws_vpc.main.id
 
-  # SSH from bastion
+  # All communication within cluster
   ingress {
-    from_port       = 22
-    to_port         = 22
-    protocol        = "tcp"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    self        = true
+  }
+
+  # All communication from bastion
+  ingress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
     security_groups = [aws_security_group.bastion.id]
-  }
-
-  # TiDB port
-  ingress {
-    from_port       = 4000
-    to_port         = 4000
-    protocol        = "tcp"
-    security_groups = [aws_security_group.bastion.id]
-  }
-
-  # TiDB status port
-  ingress {
-    from_port = 10080
-    to_port   = 10080
-    protocol  = "tcp"
-    self      = true
-  }
-
-  # PD ports
-  ingress {
-    from_port = 2379
-    to_port   = 2380
-    protocol  = "tcp"
-    self      = true
-  }
-
-  # TiKV port
-  ingress {
-    from_port = 20160
-    to_port   = 20160
-    protocol  = "tcp"
-    self      = true
-  }
-
-  # TiKV status port
-  ingress {
-    from_port = 20180
-    to_port   = 20180
-    protocol  = "tcp"
-    self      = true
-  }
-
-  # Prometheus
-  ingress {
-    from_port = 9090
-    to_port   = 9090
-    protocol  = "tcp"
-    self      = true
-  }
-
-  # Grafana
-  ingress {
-    from_port       = 3000
-    to_port         = 3000
-    protocol        = "tcp"
-    security_groups = [aws_security_group.bastion.id]
-  }
-
-  # Node exporter
-  ingress {
-    from_port = 9100
-    to_port   = 9100
-    protocol  = "tcp"
-    self      = true
-  }
-
-  # Blackbox exporter
-  ingress {
-    from_port = 9115
-    to_port   = 9115
-    protocol  = "tcp"
-    self      = true
   }
 
   egress {
