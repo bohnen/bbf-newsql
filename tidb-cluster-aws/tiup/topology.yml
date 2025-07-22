@@ -8,32 +8,32 @@ server_configs:
     replication.location-labels: ["zone","host"]
     replication.max-replicas: 3
 pd_servers:
-  - host: 10.0.2.11
+  - host: 192.168.2.11
 tidb_servers:
-  - host: 10.0.2.11
+  - host: 192.168.2.11
     config:
       server.labels:
         zone: ap-northeast-1a
         host: tidb1
 tikv_servers:
-  - host: 10.0.2.21
+  - host: 192.168.2.21
     config:
       server.labels:
         zone: ap-northeast-1a
         host: tikv1
-  - host: 10.0.2.22
+  - host: 192.168.2.22
     config:
       server.labels:
         zone: ap-northeast-1a
         host: tikv2
-  - host: 10.0.2.23
+  - host: 192.168.2.23
     config:
       server.labels:
         zone: ap-northeast-1a
         host: tikv3
 monitoring_servers:
-  - host: 10.0.2.8
+  - host: 192.168.2.8
 grafana_servers:
-  - host: 10.0.2.8
+  - host: 192.168.2.8
 alertmanager_servers:
-  - host: 10.0.2.8
+  - host: 192.168.2.8
