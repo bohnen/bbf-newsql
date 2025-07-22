@@ -1,0 +1,6 @@
+tidb_servers:
+  - host: 192.168.100.12
+    config:
+      server.labels:
+        zone: ap-northeast-1a
+        host: tidb2
