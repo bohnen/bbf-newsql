@@ -8,7 +8,7 @@ ssh_public_key_path = "~/.ssh/tidb-aws.pub"
 project_name = "tidb-cluster"
 
 # TiDBサーバの個数
-num_tidb_servers = 1
+num_tidb_servers = 2
 
 # TiKV & PD サーバの個数
 num_tikv_servers = 3

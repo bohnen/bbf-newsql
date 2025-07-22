@@ -7,7 +7,7 @@ resource "aws_instance" "tikv" {
   vpc_security_group_ids = [aws_security_group.cluster.id]
   subnet_id              = aws_subnet.private.id
   
-  private_ip = "192.168.2.2${count.index + 1}"
+  private_ip = "192.168.100.2${count.index + 1}"
 
   root_block_device {
     volume_size = 200

@@ -6,7 +6,7 @@ resource "aws_instance" "monitor" {
   vpc_security_group_ids = [aws_security_group.cluster.id]
   subnet_id              = aws_subnet.private.id
   
-  private_ip = "192.168.2.8"
+  private_ip = "192.168.100.8"
 
   root_block_device {
     volume_size = 100

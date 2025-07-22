@@ -81,7 +81,7 @@ variable "public_subnet_cidr" {
 variable "private_subnet_cidr" {
   description = "CIDR block for private subnet"
   type        = string
-  default     = "192.168.2.0/24"
+  default     = "192.168.100.0/24"
 }
 
 # AMI ID (Ubuntu 22.04 LTS)
