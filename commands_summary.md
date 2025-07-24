@@ -206,8 +206,8 @@ WHERE borrowings.return_date IS NULL;
 borrowings_idが3の貸出レコードの返却日を現在の日付に更新します。
 
 ```sql
-UPDATE borrowings SET return_date = NOW() WHERE
-borrowing_id = 3;
+UPDATE borrowings SET return_date = NOW() 
+WHERE borrowing_id = 3;
 ```
 
 borrowings_idが3のレコードを削除します。
