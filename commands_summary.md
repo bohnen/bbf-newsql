@@ -866,12 +866,13 @@ terraform --version
 
 ```bash
 git clone https://github.com/bohnen/bbf-newsql.git
-cd terraform
+cd bbf-newsql/tidb-cluster
 ```
 
-Terraformの作業ディレクトリを初期化し、必要なプロバイダープラグイン（この場合はSakura Cloudプロバイダー）をダウンロードします。
+Terraformの作業ディレクトリを初期化し、必要なプロバイダープラグインをダウンロードします。
 
 ```bash
+cd terraform
 terraform init
 ```
 
