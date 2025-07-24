@@ -1,6 +1,6 @@
-# TiDBブック コマンドライン一覧
+# 「わかばちゃんとつくって、壊して、直して学ぶ NewSQL入門」 コマンドライン一覧
 
-このドキュメントは、TiDBブックの各章のコマンドラインとその説明をまとめたものです。
+このドキュメントは、書籍「わかばちゃんとつくって、壊して、直して学ぶ NewSQL入門」の各章のコマンドラインとその説明をまとめたものです。
 
 ## Chapter 2
 
@@ -234,7 +234,7 @@ RESTORE DATABASE * from 'local://<保存ディレクトリの絶対パス>';
 
 ## Chapter 5
 
-### Chapter 5-1: 1台構成のクラスターを壊してみよう
+### 5-1: 1台構成のクラスターを壊してみよう
 
 デフォルト設定でTiDB Playgroundを起動します。
 
@@ -278,9 +278,9 @@ Booksテーブルからすべてのレコードを取得します。
 SELECT * FROM library.Books;
 ```
 
-### Chapter 5-2: 耐障害性のあるNewSQLクラスターをつくって、壊す
+### 5-2: 耐障害性のあるNewSQLクラスターをつくって、壊す
 
-#### Chapter 5-2-1: コンピューティングノードを停止してみよう
+#### 5-2-1: コンピューティングノードを停止してみよう
 
 1つのTiProxy、2つのTiDBサーバー、3つのTiKVサーバー、3つのPDサーバー、0個のTiFlashサーバーでTiDB Playgroundを起動します。
 
@@ -378,7 +378,7 @@ commit;
 SELECT * FROM library.Books;
 ```
 
-### Chapter 5-2-2: コンピューティングノードを直してみよう
+#### 5-2-2: コンピューティングノードを直してみよう
 
 TiDBサーバを2台に戻します。
 
@@ -386,7 +386,7 @@ TiDBサーバを2台に戻します。
 tiup playground scale-out --db 2
 ```
 
-### Chapter 5-2-3: ストレージノードを停止してみよう
+#### 5-2-3: ストレージノードを停止してみよう
 
 リージョンIDとキー範囲を含む、Booksテーブルのリージョン情報を表示します。
 
@@ -434,7 +434,7 @@ INSERT INTO Books (title, author, publisher, published_year) VALUES ('test_title
 SELECT * FROM library.Books;
 ```
 
-### Chapter 5-2-4: ストレージノードを直してみよう
+#### 5-2-4: ストレージノードを直してみよう
 
 TiDb Playgroundを再起動します。
 
@@ -501,7 +501,7 @@ TiKVストアのステータスを表示して、追加されたストアの稼�
 SELECT * FROM information_schema.tikv_store_status;
 ```
 
-### Chapter 5-2-5: クラスター管理ノードを停止してみよう
+#### 5-2-5: クラスター管理ノードを停止してみよう
 
 PDサーバーに接続してPDメンバー情報を表示します。
 
@@ -515,7 +515,7 @@ PDサーバーを指定して接続し、PDメンバー情報を表示します�
 tiup ctl:v8.5.1 pd member show --pd http://127.0.0.1:2379
 ```
 
-### 5.2.6 クラスター管理ノードを直してみよう
+#### 5.2.6 クラスター管理ノードを直してみよう
 
 データを保持するためのタグ付きでTiDB Playgroundを起動します。
 
@@ -833,7 +833,7 @@ SELECT REGION_ID, START_KEY, END_KEY FROM INFORMATION_SCHEMA.TIKV_REGION_STATUS 
 
 ## Chapter 8
 
-### ８．２ Terraformを使ったサーバのセットアップ
+### 8.2 Terraformを使ったサーバのセットアップ
 
 サーバーのSSHキーペアを生成します。
 
