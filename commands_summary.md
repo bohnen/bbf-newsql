@@ -391,7 +391,7 @@ tiup playground scale-out --db 2
 リージョンIDとキー範囲を含む、Booksテーブルのリージョン情報を表示します。
 
 ```sql
-SELECT region_id,start_key, end_key, table_name, db_name FROM information_schema.tikv_region_status WHERE table_name = 'Books';
+SELECT region_id, start_key, end_key, table_name, db_name FROM information_schema.tikv_region_status WHERE table_name = 'Books';
 ```
 
 クラスター全体のすべてのリージョンリーダーをリストします。
@@ -403,7 +403,7 @@ SELECT * FROM information_schema.tikv_region_peers WHERE is_leader = 1 ORDER BY 
 IPアドレスとstore_idを含むすべてのTiKVストアの詳細なステータスを表示します。
 
 ```sql
-SELECT * FROM tikv_store_status;
+SELECT * FROM information_schema.tikv_store_status;
 ```
 
 information_schemaデータベースに切り替えます。
